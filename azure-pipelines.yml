@@ -35,7 +35,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(build.artifactStagingDirectory)'
+    PathtoPublish: '$(build.artifactStagingDirectory)/**/*.zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
