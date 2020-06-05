@@ -33,9 +33,15 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(build.artifactStagingDirectory)'
+    Contents: '**\*.zip'
+    TargetFolder: '$(build.artifactStagingDirectory)\drop'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(build.artifactStagingDirectory)\*.zip'
+    PathtoPublish: '$(build.artifactStagingDirectory)\drop'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
